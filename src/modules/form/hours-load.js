@@ -6,6 +6,9 @@ import { hoursClick } from "./hour-click.js"
 const hours = document.getElementById("hours")
 
 export function hoursLoad({ date }) {
+    //limpa a lista do dia 
+    hours.innerHTML = "";
+
     // Lógica para carregar as horas disponíveis
     const opening = openingHours.map((hour) => {
         //recupera a hora
