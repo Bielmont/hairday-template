@@ -10,7 +10,9 @@ export async function schedulesDay() {
     const date = selectedDate.value
 
     //buscar na api as os agendamentos
-    const dailySchedules = await scheduleFetchByDay({ date });
+    // O problema esta aqui { date }
+    // Vc esta passando um object ao inves de uma string
+    const dailySchedules = await scheduleFetchByDay(date);
     console.log(dailySchedules);
 
 
