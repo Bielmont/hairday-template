@@ -39,11 +39,12 @@ form.onsubmit = async (event) => {
         //gera um id
         const id = new Date().getTime();
 
-        await scheduleNew({
-            id,
-            name,
-            when,
-        });
+        await scheduleNew
+            ({
+                id,
+                name,
+                when,
+            });
 
 
     } catch (error) {

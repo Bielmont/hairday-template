@@ -4,7 +4,7 @@ const periodMorning = document.getElementById("period-morning");
 const periodAfternoon = document.getElementById("period-afternoon");
 const periodNight = document.getElementById("period-night");
 
-export function schedulesShow({ dailySchedules, }) {
+export function schedulesShow({ dailySchedules }) {
     try {
         periodMorning.innerHTML = "";
         periodAfternoon.innerHTML = "";
