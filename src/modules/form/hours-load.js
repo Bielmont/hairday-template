@@ -5,9 +5,17 @@ import { hoursClick } from "./hour-click.js"
 
 const hours = document.getElementById("hours")
 
-export function hoursLoad({ date }) {
+export function hoursLoad({ date, dailySchedules }) {
     //limpa a lista do dia 
     hours.innerHTML = "";
+
+    //obtem a lista de horarios ocupados
+    const unavailableHours = dailySchedules.map((schedule) =>
+        dayjs(schedule.when).format("HH:mm")
+    )
+
+
+
 
     // Lógica para carregar as horas disponíveis
     const opening = openingHours.map((hour) => {
@@ -15,12 +23,14 @@ export function hoursLoad({ date }) {
         const [scheduleHour] = hour.split(":")
 
         //adiciona a hora no date e ve se não tem hora no passado
-        const isHourPast = dayjs(date).add(scheduleHour, "hour").isAfter(dayjs())
+        const isHourPast = dayjs(date).add(scheduleHour, "hour").isBefore(dayjs())
+
+        const available = !unavailableHours.includes(hour) && !isHourPast
 
         //define se o horario está disponível
         return {
             hour,
-            available: isHourPast
+            available
         }
     })
 
